@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct StartItApp: App {
+    @State private var user: User? = nil
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if user == nil {
+                LoginRouter.createModule { user in
+                    self.user = user
+                }
+            } else {
+                Text("Logged in as \(user?.name ?? "NOONE )))))")")
+            }
+        
         }
     }
 }

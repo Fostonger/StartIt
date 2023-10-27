@@ -14,6 +14,19 @@
 		05974EB92AE70E3900C01CF3 /* StartItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EB82AE70E3900C01CF3 /* StartItTests.swift */; };
 		05974EC32AE70E3900C01CF3 /* StartItUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EC22AE70E3900C01CF3 /* StartItUITests.swift */; };
 		05974EC52AE70E3900C01CF3 /* StartItUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EC42AE70E3900C01CF3 /* StartItUITestsLaunchTests.swift */; };
+		05974ED62AE830D400C01CF3 /* LoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974ED52AE830D400C01CF3 /* LoginProtocol.swift */; };
+		05974EDA2AE831D000C01CF3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974ED92AE831D000C01CF3 /* LoginView.swift */; };
+		05974EDC2AEB4B6300C01CF3 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EDB2AEB4B6300C01CF3 /* APIClient.swift */; };
+		05974EDE2AEB4D0F00C01CF3 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EDD2AEB4D0F00C01CF3 /* APIEndpoint.swift */; };
+		05974EE02AEB556300C01CF3 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EDF2AEB556300C01CF3 /* Structs.swift */; };
+		05974EE32AEB5AC600C01CF3 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EE22AEB5AC600C01CF3 /* LoginPresenter.swift */; };
+		05974EE62AEB5DA500C01CF3 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EE52AEB5DA500C01CF3 /* LoginInteractor.swift */; };
+		05974EE92AEB627A00C01CF3 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EE82AEB627A00C01CF3 /* LoginRouter.swift */; };
+		05974EF02AEBAADE00C01CF3 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EEF2AEBAADE00C01CF3 /* RegisterRouter.swift */; };
+		05974EF22AEBAB1600C01CF3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EF12AEBAB1600C01CF3 /* RegisterView.swift */; };
+		05974EF42AEBAB4900C01CF3 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EF32AEBAB4900C01CF3 /* RegisterPresenter.swift */; };
+		05974EF62AEBAB8D00C01CF3 /* RegisterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EF52AEBAB8D00C01CF3 /* RegisterProtocols.swift */; };
+		05974EF82AEBB8E600C01CF3 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EF72AEBB8E600C01CF3 /* RegisterInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +57,19 @@
 		05974EBE2AE70E3900C01CF3 /* StartItUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StartItUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05974EC22AE70E3900C01CF3 /* StartItUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartItUITests.swift; sourceTree = "<group>"; };
 		05974EC42AE70E3900C01CF3 /* StartItUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartItUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		05974ED52AE830D400C01CF3 /* LoginProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocol.swift; sourceTree = "<group>"; };
+		05974ED92AE831D000C01CF3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		05974EDB2AEB4B6300C01CF3 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		05974EDD2AEB4D0F00C01CF3 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		05974EDF2AEB556300C01CF3 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		05974EE22AEB5AC600C01CF3 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		05974EE52AEB5DA500C01CF3 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		05974EE82AEB627A00C01CF3 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		05974EEF2AEBAADE00C01CF3 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
+		05974EF12AEBAB1600C01CF3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		05974EF32AEBAB4900C01CF3 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
+		05974EF52AEBAB8D00C01CF3 /* RegisterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocols.swift; sourceTree = "<group>"; };
+		05974EF72AEBB8E600C01CF3 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +120,10 @@
 		05974EA62AE70E3800C01CF3 /* StartIt */ = {
 			isa = PBXGroup;
 			children = (
+				05974EEA2AEBAA8F00C01CF3 /* RegisterModule */,
+				05974ED32AE8309600C01CF3 /* Common */,
+				05974ED22AE8307C00C01CF3 /* LoginModule */,
+				05974ED12AE8301900C01CF3 /* APIClient */,
 				05974EA72AE70E3800C01CF3 /* StartItApp.swift */,
 				05974EA92AE70E3800C01CF3 /* ContentView.swift */,
 				05974EAB2AE70E3900C01CF3 /* Assets.xcassets */,
@@ -125,6 +155,111 @@
 				05974EC42AE70E3900C01CF3 /* StartItUITestsLaunchTests.swift */,
 			);
 			path = StartItUITests;
+			sourceTree = "<group>";
+		};
+		05974ED12AE8301900C01CF3 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				05974EDB2AEB4B6300C01CF3 /* APIClient.swift */,
+				05974EDD2AEB4D0F00C01CF3 /* APIEndpoint.swift */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		05974ED22AE8307C00C01CF3 /* LoginModule */ = {
+			isa = PBXGroup;
+			children = (
+				05974ED52AE830D400C01CF3 /* LoginProtocol.swift */,
+				05974EE72AEB624800C01CF3 /* Router */,
+				05974EE42AEB5D9200C01CF3 /* Interactor */,
+				05974EE12AEB5AAF00C01CF3 /* Presenter */,
+				05974ED82AE831B300C01CF3 /* View */,
+			);
+			path = LoginModule;
+			sourceTree = "<group>";
+		};
+		05974ED32AE8309600C01CF3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				05974EDF2AEB556300C01CF3 /* Structs.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		05974ED82AE831B300C01CF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				05974ED92AE831D000C01CF3 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		05974EE12AEB5AAF00C01CF3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				05974EE22AEB5AC600C01CF3 /* LoginPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		05974EE42AEB5D9200C01CF3 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				05974EE52AEB5DA500C01CF3 /* LoginInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		05974EE72AEB624800C01CF3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				05974EE82AEB627A00C01CF3 /* LoginRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		05974EEA2AEBAA8F00C01CF3 /* RegisterModule */ = {
+			isa = PBXGroup;
+			children = (
+				05974EEE2AEBAABC00C01CF3 /* View */,
+				05974EED2AEBAAAF00C01CF3 /* Presenter */,
+				05974EEC2AEBAAA600C01CF3 /* Interactor */,
+				05974EEB2AEBAA9D00C01CF3 /* Router */,
+				05974EF52AEBAB8D00C01CF3 /* RegisterProtocols.swift */,
+			);
+			path = RegisterModule;
+			sourceTree = "<group>";
+		};
+		05974EEB2AEBAA9D00C01CF3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				05974EEF2AEBAADE00C01CF3 /* RegisterRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		05974EEC2AEBAAA600C01CF3 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				05974EF72AEBB8E600C01CF3 /* RegisterInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		05974EED2AEBAAAF00C01CF3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				05974EF32AEBAB4900C01CF3 /* RegisterPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		05974EEE2AEBAABC00C01CF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				05974EF12AEBAB1600C01CF3 /* RegisterView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +392,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05974EE32AEB5AC600C01CF3 /* LoginPresenter.swift in Sources */,
+				05974EDA2AE831D000C01CF3 /* LoginView.swift in Sources */,
+				05974EDE2AEB4D0F00C01CF3 /* APIEndpoint.swift in Sources */,
 				05974EAA2AE70E3800C01CF3 /* ContentView.swift in Sources */,
+				05974EF02AEBAADE00C01CF3 /* RegisterRouter.swift in Sources */,
+				05974EE02AEB556300C01CF3 /* Structs.swift in Sources */,
+				05974EF82AEBB8E600C01CF3 /* RegisterInteractor.swift in Sources */,
+				05974ED62AE830D400C01CF3 /* LoginProtocol.swift in Sources */,
+				05974EF42AEBAB4900C01CF3 /* RegisterPresenter.swift in Sources */,
+				05974EDC2AEB4B6300C01CF3 /* APIClient.swift in Sources */,
 				05974EA82AE70E3800C01CF3 /* StartItApp.swift in Sources */,
+				05974EF62AEBAB8D00C01CF3 /* RegisterProtocols.swift in Sources */,
+				05974EF22AEBAB1600C01CF3 /* RegisterView.swift in Sources */,
+				05974EE92AEB627A00C01CF3 /* LoginRouter.swift in Sources */,
+				05974EE62AEB5DA500C01CF3 /* LoginInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
