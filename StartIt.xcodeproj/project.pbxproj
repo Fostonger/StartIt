@@ -27,6 +27,15 @@
 		05974EF42AEBAB4900C01CF3 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EF32AEBAB4900C01CF3 /* RegisterPresenter.swift */; };
 		05974EF62AEBAB8D00C01CF3 /* RegisterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EF52AEBAB8D00C01CF3 /* RegisterProtocols.swift */; };
 		05974EF82AEBB8E600C01CF3 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EF72AEBB8E600C01CF3 /* RegisterInteractor.swift */; };
+		05974EFE2AEBDFB700C01CF3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EFD2AEBDFB700C01CF3 /* HomeView.swift */; };
+		05974F002AEBE0ED00C01CF3 /* AddItemProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974EFF2AEBE0ED00C01CF3 /* AddItemProtocols.swift */; };
+		05974F032AEBE12E00C01CF3 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F022AEBE12E00C01CF3 /* AddItemView.swift */; };
+		05974F062AEBEBC900C01CF3 /* AddItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F052AEBEBC900C01CF3 /* AddItemPresenter.swift */; };
+		05974F0A2AEBF12200C01CF3 /* AddItemInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F092AEBF12200C01CF3 /* AddItemInteractor.swift */; };
+		05974F0D2AEBF5EE00C01CF3 /* AddItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F0C2AEBF5EE00C01CF3 /* AddItemRouter.swift */; };
+		05974F0F2AEBF64200C01CF3 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F0E2AEBF64200C01CF3 /* AppContext.swift */; };
+		05974F112AEC00AC00C01CF3 /* AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F102AEC00AC00C01CF3 /* AddImageView.swift */; };
+		05974F132AEDBC7100C01CF3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F122AEDBC7100C01CF3 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +79,15 @@
 		05974EF32AEBAB4900C01CF3 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		05974EF52AEBAB8D00C01CF3 /* RegisterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocols.swift; sourceTree = "<group>"; };
 		05974EF72AEBB8E600C01CF3 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
+		05974EFD2AEBDFB700C01CF3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		05974EFF2AEBE0ED00C01CF3 /* AddItemProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemProtocols.swift; sourceTree = "<group>"; };
+		05974F022AEBE12E00C01CF3 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		05974F052AEBEBC900C01CF3 /* AddItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemPresenter.swift; sourceTree = "<group>"; };
+		05974F092AEBF12200C01CF3 /* AddItemInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemInteractor.swift; sourceTree = "<group>"; };
+		05974F0C2AEBF5EE00C01CF3 /* AddItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemRouter.swift; sourceTree = "<group>"; };
+		05974F0E2AEBF64200C01CF3 /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
+		05974F102AEC00AC00C01CF3 /* AddImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageView.swift; sourceTree = "<group>"; };
+		05974F122AEDBC7100C01CF3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,9 +138,9 @@
 		05974EA62AE70E3800C01CF3 /* StartIt */ = {
 			isa = PBXGroup;
 			children = (
-				05974EEA2AEBAA8F00C01CF3 /* RegisterModule */,
+				05974EFA2AEBDF7700C01CF3 /* MainPage */,
+				05974EF92AEBDF6500C01CF3 /* Login */,
 				05974ED32AE8309600C01CF3 /* Common */,
-				05974ED22AE8307C00C01CF3 /* LoginModule */,
 				05974ED12AE8301900C01CF3 /* APIClient */,
 				05974EA72AE70E3800C01CF3 /* StartItApp.swift */,
 				05974EA92AE70E3800C01CF3 /* ContentView.swift */,
@@ -182,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				05974EDF2AEB556300C01CF3 /* Structs.swift */,
+				05974F0E2AEBF64200C01CF3 /* AppContext.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -260,6 +279,86 @@
 				05974EF12AEBAB1600C01CF3 /* RegisterView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		05974EF92AEBDF6500C01CF3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				05974EEA2AEBAA8F00C01CF3 /* RegisterModule */,
+				05974ED22AE8307C00C01CF3 /* LoginModule */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		05974EFA2AEBDF7700C01CF3 /* MainPage */ = {
+			isa = PBXGroup;
+			children = (
+				05974F072AEBEFCB00C01CF3 /* Util */,
+				05974EFC2AEBDF9400C01CF3 /* HomeModule */,
+				05974EFB2AEBDF8200C01CF3 /* AddItemModule */,
+				05974EFD2AEBDFB700C01CF3 /* HomeView.swift */,
+			);
+			path = MainPage;
+			sourceTree = "<group>";
+		};
+		05974EFB2AEBDF8200C01CF3 /* AddItemModule */ = {
+			isa = PBXGroup;
+			children = (
+				05974F0B2AEBF5DC00C01CF3 /* Router */,
+				05974F082AEBF10900C01CF3 /* Interactor */,
+				05974F042AEBEBB200C01CF3 /* Presenter */,
+				05974F012AEBE12400C01CF3 /* View */,
+				05974EFF2AEBE0ED00C01CF3 /* AddItemProtocols.swift */,
+			);
+			path = AddItemModule;
+			sourceTree = "<group>";
+		};
+		05974EFC2AEBDF9400C01CF3 /* HomeModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HomeModule;
+			sourceTree = "<group>";
+		};
+		05974F012AEBE12400C01CF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				05974F022AEBE12E00C01CF3 /* AddItemView.swift */,
+				05974F102AEC00AC00C01CF3 /* AddImageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		05974F042AEBEBB200C01CF3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				05974F052AEBEBC900C01CF3 /* AddItemPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		05974F072AEBEFCB00C01CF3 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				05974F122AEDBC7100C01CF3 /* ImagePicker.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		05974F082AEBF10900C01CF3 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				05974F092AEBF12200C01CF3 /* AddItemInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		05974F0B2AEBF5DC00C01CF3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				05974F0C2AEBF5EE00C01CF3 /* AddItemRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,19 +491,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05974F002AEBE0ED00C01CF3 /* AddItemProtocols.swift in Sources */,
+				05974F032AEBE12E00C01CF3 /* AddItemView.swift in Sources */,
 				05974EE32AEB5AC600C01CF3 /* LoginPresenter.swift in Sources */,
 				05974EDA2AE831D000C01CF3 /* LoginView.swift in Sources */,
 				05974EDE2AEB4D0F00C01CF3 /* APIEndpoint.swift in Sources */,
+				05974F0F2AEBF64200C01CF3 /* AppContext.swift in Sources */,
 				05974EAA2AE70E3800C01CF3 /* ContentView.swift in Sources */,
 				05974EF02AEBAADE00C01CF3 /* RegisterRouter.swift in Sources */,
+				05974F062AEBEBC900C01CF3 /* AddItemPresenter.swift in Sources */,
 				05974EE02AEB556300C01CF3 /* Structs.swift in Sources */,
 				05974EF82AEBB8E600C01CF3 /* RegisterInteractor.swift in Sources */,
+				05974F112AEC00AC00C01CF3 /* AddImageView.swift in Sources */,
+				05974F0A2AEBF12200C01CF3 /* AddItemInteractor.swift in Sources */,
 				05974ED62AE830D400C01CF3 /* LoginProtocol.swift in Sources */,
 				05974EF42AEBAB4900C01CF3 /* RegisterPresenter.swift in Sources */,
 				05974EDC2AEB4B6300C01CF3 /* APIClient.swift in Sources */,
 				05974EA82AE70E3800C01CF3 /* StartItApp.swift in Sources */,
 				05974EF62AEBAB8D00C01CF3 /* RegisterProtocols.swift in Sources */,
 				05974EF22AEBAB1600C01CF3 /* RegisterView.swift in Sources */,
+				05974EFE2AEBDFB700C01CF3 /* HomeView.swift in Sources */,
+				05974F0D2AEBF5EE00C01CF3 /* AddItemRouter.swift in Sources */,
+				05974F132AEDBC7100C01CF3 /* ImagePicker.swift in Sources */,
 				05974EE92AEB627A00C01CF3 /* LoginRouter.swift in Sources */,
 				05974EE62AEB5DA500C01CF3 /* LoginInteractor.swift in Sources */,
 			);

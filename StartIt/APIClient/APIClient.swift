@@ -12,7 +12,7 @@ protocol APIClientProtocol {
         type: T.Type,
         endpoint: Endpoint,
         parameters: [String: Any]?,
-        body: [String: Any]?,
+        body: Encodable?,
         completion: @escaping (Result<T,Error>)->Void
     )
 }
@@ -24,7 +24,7 @@ class APIClient : APIClientProtocol {
         type: T.Type,
         endpoint: Endpoint,
         parameters: [String: Any]? = nil,
-        body: [String: Any]? = nil,
+        body: Encodable? = nil,
         completion: @escaping (Result<T,Error>)->Void
     )  {
         
@@ -41,7 +41,8 @@ class APIClient : APIClientProtocol {
         
         if let body = body {
             do {
-                let jsonData = try JSONSerialization.data(withJSONObject: body)
+                let jsonData = try JSONEncoder().encode(body)
+                print(String(data: jsonData, encoding: .utf8))
                 request.httpBody = jsonData
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             } catch {

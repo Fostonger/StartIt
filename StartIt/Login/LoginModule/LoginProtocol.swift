@@ -10,7 +10,7 @@ protocol LoginViewToPresenterProtocol {
 }
 
 protocol LoginPresenterToViewProtocol {
-    func error(message : String)
+    mutating func error(message : String)
 }
 
 protocol LoginPresenterToInteractorProtocol {

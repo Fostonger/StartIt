@@ -17,7 +17,7 @@ struct StartItApp: App {
                     self.user = user
                 }
             } else {
-                Text("Logged in as \(user?.name ?? "NOONE )))))")")
+                HomeView(context: AppContext(user: user!))
             }
         
         }

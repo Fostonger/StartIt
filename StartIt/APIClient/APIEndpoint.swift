@@ -34,3 +34,81 @@ enum LoginEndpoint: Endpoint {
         }
     }
 }
+
+enum CategoryEndpoint: Endpoint {
+    case categories
+    
+    func getEndpoint() -> String {
+        switch self {
+        case .categories:
+            return "categories"
+        }
+    }
+    
+    var method: String {
+        switch self {
+        case .categories:
+            return "GET"
+        }
+    }
+}
+
+enum LocationEndpoint: Endpoint {
+    case location
+    
+    func getEndpoint() -> String {
+        switch self {
+        case .location:
+            return "locations"
+        }
+    }
+    
+    var method: String {
+        switch self {
+        case .location:
+            return "GET"
+        }
+    }
+}
+
+enum StatusEndpoint: Endpoint {
+    case status
+    
+    func getEndpoint() -> String {
+        switch self {
+        case .status:
+            return "statuses"
+        }
+    }
+    
+    var method: String {
+        switch self {
+        case .status:
+            return "GET"
+        }
+    }
+}
+
+enum ItemEndpoint: Endpoint {
+    var baseRequest: String {
+        "add_item/"
+    }
+    case saveItem
+    case loadImage
+    
+    func getEndpoint() -> String {
+        switch self {
+        case .saveItem:
+            return baseRequest + "create_item"
+        case .loadImage:
+            return baseRequest + "upload_photo"
+        }
+    }
+    
+    var method: String {
+        switch self {
+        case .saveItem, .loadImage:
+            return "POST"
+        }
+    }
+}

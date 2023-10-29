@@ -17,11 +17,7 @@ class RegisterInteractor: RegisterPresenterToInteractorProtocol {
             type: User.self,
             endpoint: LoginEndpoint.register,
             parameters: nil,
-            body: ["username": user.username,
-                   "password": user.password,
-                   "name": user.name,
-                   "familyName": user.familyName,
-                   "isuNumber": user.isuNumber]
+            body: user
         ) { [weak self] result in
             switch result {
             case .success(let user):
