@@ -9,12 +9,13 @@ import Foundation
 
 class AddItemRouter: AddItemPresenterToRouterProtocol {
     private let context: AppContext
+    private var homeContext: HomeViewContext?
     
-    static func createModule(context: AppContext) -> AddItemView {
-        var view = AddItemView()
+    static func createModule(context: AppContext, homeContext: HomeViewContext) -> AddItemView {
+        var view = AddItemView(homeContext: homeContext)
         var presenter : AddItemViewToPresenterProtocol & AddItemInteractorToPresenter = AddItemPresenter()
         var interactor : AddItemPresenterToInteractorProtocol = AddItemInteractor()
-        let router = AddItemRouter(context: context)
+        let router = AddItemRouter(context: context, homeContext: homeContext)
         
         
         view.presenter = presenter
@@ -28,8 +29,15 @@ class AddItemRouter: AddItemPresenterToRouterProtocol {
         return view
     }
     
-    private init(context: AppContext) {
+    private init(context: AppContext, homeContext: HomeViewContext) {
         self.context = context
+        self.homeContext = homeContext
+    }
+    
+    func successfulItemCreation() {
+        DispatchQueue.main.async {
+            self.homeContext?.itemCreated = true
+        }
     }
     
     func getContext() -> AppContext {

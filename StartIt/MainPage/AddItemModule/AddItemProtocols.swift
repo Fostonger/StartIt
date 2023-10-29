@@ -17,11 +17,13 @@ protocol AddItemViewToPresenterProtocol {
     var statuses:   [Status] { get }
     
     func fetchData()
-    func nextStep(item: Item)
+    func nextStep(item: Item, completion: @escaping (Result<Item, Error>) -> () )
+    func sendPhoto(_ photoData: Data, completion: @escaping (Result<Bool, Error>) -> ())
 }
 
 protocol AddItemPresenterToViewProtocol {
     func error(message : String)
+    func popView()
 }
 
 protocol AddItemPresenterToInteractorProtocol {
@@ -31,7 +33,8 @@ protocol AddItemPresenterToInteractorProtocol {
     func fetchCategories(completion: @escaping (Result<[Category], Error>) -> ())
     func fetchLocations(completion: @escaping (Result<[Location], Error>) -> ())
     func fetchStatuses(completion: @escaping (Result<[Status], Error>) -> ())
-    func sendItemData(_ item: Item)
+    func sendItemData(_ item: Item, completion: @escaping (Result<Item, Error>) -> ())
+    func sendPhoto(_ photoData: Data, seqNum: Int, itemId: Int64, completion: @escaping (Result<Bool, Error>) -> ())
 }
 
 protocol AddItemInteractorToPresenter {
@@ -41,6 +44,7 @@ protocol AddItemInteractorToPresenter {
 
 
 protocol AddItemPresenterToRouterProtocol {
-    static func createModule(context: AppContext) -> AddItemView
+    static func createModule(context: AppContext, homeContext: HomeViewContext) -> AddItemView
     func getContext() -> AppContext
+    func successfulItemCreation()
 }

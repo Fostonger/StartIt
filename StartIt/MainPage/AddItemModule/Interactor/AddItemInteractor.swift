@@ -60,22 +60,21 @@ class AddItemInteractor: AddItemPresenterToInteractorProtocol {
         }
     }
     
-    func sendItemData(_ item: Item) {
+    func sendItemData(_ item: Item, completion: @escaping (Result<Item, Error>) -> ()) {
         APIClient?.performRequest(
             type: Item.self,
             endpoint: ItemEndpoint.saveItem,
             parameters: nil,
-            body: item
-        ) { [weak self] result in
-            switch result {
-            case .success(let item):
-                self?.presenter?.success(item: item)
-            case .failure(let failure):
-                self?.presenter?.fail(errorMessage: failure.localizedDescription)
-            }
-                
-        }
+            body: item, completion: completion
+        )
     }
     
-    
+    func sendPhoto(_ photoData: Data, seqNum: Int, itemId: Int64, completion: @escaping (Result<Bool, Error>) -> ()) {
+        APIClient?.sendPhoto(
+            type: Bool.self,
+            endpoint: ItemEndpoint.loadImage,
+            parameters: nil,
+            image: photoData, seqNum: seqNum, itemId: itemId, completion: completion
+        )
+    }
 }

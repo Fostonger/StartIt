@@ -7,8 +7,23 @@
 
 import SwiftUI
 
+@MainActor
+class HomeViewContext: ObservableObject {
+    @Published var itemCreated: Bool = false {
+        didSet {
+            if itemCreated {
+                selectedTab = 0
+            }
+        }
+    }
+    @Published var selectedTab: Int = 0
+}
+
 struct HomeView: View {
     var context: AppContext
+    @ObservedObject private var homeContext = HomeViewContext()
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         TabView {
             NavigationView {
@@ -18,18 +33,41 @@ struct HomeView: View {
                     }
                 }
                 .navigationTitle("First")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(
+                            "Add item",
+                            destination: AddItemRouter.createModule(
+                                context: context, homeContext: homeContext
+                            )
+                        )
+                        
+                    }
+                }
             }
             .tabItem {
                 Image(systemName: "1.square.fill")
                 Text("Home")
             }
-
-            AddItemRouter.createModule(context: context)
+            .tag(0)
+            
+            AddItemRouter.createModule(context: context, homeContext: homeContext)
             .tabItem {
                 Image(systemName: "2.square.fill")
                 Text("Add item")
             }
+            .tag(1)
         }
+        
+//        .alert(isPresented: $homeContext.itemCreated, content: {
+//            Alert(
+//                title: Text("Successfully created"),
+//                message: Text("The item was added successfully"),
+//                dismissButton: .default(Text("Great!")) {
+//                    presentationMode.wrappedValue.dismiss()
+//                }
+//            )
+//        })
     }
 }
 

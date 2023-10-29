@@ -36,6 +36,18 @@ struct Category: Codable, Hashable {
     let description: String
 }
 
+struct Photo: Codable {
+    let id: Int64
+    let itemId: Item
+    let seqNumber: Int64
+    let photoPath: String
+    
+    private enum CodingKeys : String, CodingKey {
+        case id
+        case itemId = "item_id", seqNumber = "seq_number", photoPath = "photo_path"
+    }
+}
+
 struct Item: Codable {
     let id: Int64
     let status: Status

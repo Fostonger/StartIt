@@ -18,6 +18,7 @@ class AddItemPresenter: AddItemViewToPresenterProtocol {
     var categories: [Category] = []
     var locations:  [Location] = []
     var statuses:   [Status] = []
+    private var item: Item?
     
     func fetchData() {
         interactor?.fetchCategories { [weak self] result in
@@ -48,8 +49,37 @@ class AddItemPresenter: AddItemViewToPresenterProtocol {
         }
     }
     
-    func nextStep(item: Item) {
-        interactor?.sendItemData(item)
+    func nextStep(item: Item, completion: @escaping (Result<Item, Error>) -> () ) {
+        self.item = item
+        completion(.success(item))
+    }
+    
+    func sendPhoto(_ photo: Data, completion: @escaping (Result<Bool, Error>) -> () ) {
+        guard var item = self.item else {
+            completion(.failure(ItemCreationError.photoNotFound))
+            return
+        }
+        interactor?.sendItemData(item) { [weak self] result in
+            switch result {
+            case .success(let success):
+                self?.item = success
+                item = success
+                self?.success(item: success)
+            case .failure(let failure):
+                self?.fail(errorMessage: failure.localizedDescription)
+            }
+            self?.interactor?.sendPhoto(photo, seqNum: 1, itemId: item.id) { result in
+                switch result {
+                case .success(_):
+                    self?.router?.successfulItemCreation()
+                    self?.view?.popView()
+    //                self?.success(item: success)
+                case .failure(let failure):
+                    self?.fail(errorMessage: failure.localizedDescription)
+                }
+                completion(result)
+            }
+        }
     }
 }
 

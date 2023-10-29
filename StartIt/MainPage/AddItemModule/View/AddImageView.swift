@@ -9,15 +9,17 @@ import SwiftUI
 import PhotosUI
 
 struct AddImageView: View {
+    @Environment(\.presentationMode) var presentationMode
     @StateObject private var imagePicker = ImagePicker()
     
     var presenter: AddItemViewToPresenterProtocol?
+    var parentView: AddItemView?
     
     var body: some View {
         NavigationView {
             VStack {
                 if let image = imagePicker.image {
-                    image
+                    Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
                 } else {
@@ -40,7 +42,13 @@ struct AddImageView: View {
                 .padding(.bottom, 20)
                 
                 Button(action: {
-                    
+                    if let image = imagePicker.image {
+                        presenter?.sendPhoto(
+                            image.jpegData(compressionQuality: 0)!
+                        ) { result in
+                            self.parentView?.presentationMode.wrappedValue.dismiss()
+                        }
+                    }
                 }) {
                     Text("Continue")
                         .font(.headline)

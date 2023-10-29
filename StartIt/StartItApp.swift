@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct StartItApp: App {
-    @State private var user: User? = nil
+    @State private var user: User? = User(id: 1, name: "Fost", familyName: "Musin", isuNumber: 12, username: "Fost", password: "Fost")
     var body: some Scene {
         WindowGroup {
             if user == nil {
