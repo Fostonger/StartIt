@@ -8,7 +8,7 @@
 import Foundation
 
 class AddItemRouter: AddItemPresenterToRouterProtocol {
-    private let context: AppContext
+    private var context: AppContext
     private var homeContext: HomeViewContext?
     
     static func createModule(context: AppContext, homeContext: HomeViewContext) -> AddItemView {
@@ -42,5 +42,9 @@ class AddItemRouter: AddItemPresenterToRouterProtocol {
     
     func getContext() -> AppContext {
         return context
+    }
+    
+    func setContext(_ context: AppContext) {
+        self.context = context
     }
 }

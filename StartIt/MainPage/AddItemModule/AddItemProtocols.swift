@@ -46,5 +46,6 @@ protocol AddItemInteractorToPresenter {
 protocol AddItemPresenterToRouterProtocol {
     static func createModule(context: AppContext, homeContext: HomeViewContext) -> AddItemView
     func getContext() -> AppContext
+    func setContext(_ context: AppContext)
     func successfulItemCreation()
 }

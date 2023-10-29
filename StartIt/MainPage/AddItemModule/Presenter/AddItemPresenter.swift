@@ -25,6 +25,11 @@ class AddItemPresenter: AddItemViewToPresenterProtocol {
             switch result {
             case .success(let categories):
                 self?.categories = categories.sorted(by: { $0.id < $1.id })
+                if var context = self?.router?.getContext(),
+                    let sortedCategories = self?.categories {
+                    context.categories = sortedCategories
+                    self?.router?.setContext(context)
+                }
             case .failure(let failure):
                 self?.view?.error(message: failure.localizedDescription)
             }
@@ -34,6 +39,11 @@ class AddItemPresenter: AddItemViewToPresenterProtocol {
             switch result {
             case .success(let locations):
                 self?.locations = locations.sorted(by: { $0.id < $1.id })
+                if var context = self?.router?.getContext(),
+                    let sortedLocations = self?.locations {
+                    context.locations = sortedLocations
+                    self?.router?.setContext(context)
+                }
             case .failure(let failure):
                 self?.view?.error(message: failure.localizedDescription)
             }
@@ -43,6 +53,11 @@ class AddItemPresenter: AddItemViewToPresenterProtocol {
             switch result {
             case .success(let statuses):
                 self?.statuses = statuses.sorted(by: { $0.id < $1.id })
+                if var context = self?.router?.getContext(),
+                    let sortedStatuses = self?.statuses {
+                    context.statuses = sortedStatuses
+                    self?.router?.setContext(context)
+                }
             case .failure(let failure):
                 self?.view?.error(message: failure.localizedDescription)
             }

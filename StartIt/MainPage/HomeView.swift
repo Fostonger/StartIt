@@ -20,27 +20,23 @@ class HomeViewContext: ObservableObject {
 }
 
 struct HomeView: View {
-    var context: AppContext
+    @State var context: AppContext
     @ObservedObject private var homeContext = HomeViewContext()
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         TabView {
             NavigationView {
-                List {
-                    NavigationLink(destination: Text("First Screen")) {
-                        Text("Go to First Screen")
-                    }
-                }
-                .navigationTitle("First")
+                SearchItemRouter.createModule(with: context)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(
-                            "Add item",
                             destination: AddItemRouter.createModule(
                                 context: context, homeContext: homeContext
                             )
-                        )
+                        ) {
+                            Image(systemName: "plus")
+                        }
                         
                     }
                 }

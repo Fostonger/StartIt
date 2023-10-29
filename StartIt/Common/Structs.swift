@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Codable {
+struct User: Codable, Hashable {
     let id: Int64
     let name: String
     let familyName: String
@@ -21,17 +21,22 @@ struct User: Codable {
     }
 }
 
-struct Status: Codable {
+protocol Describable {
+    var id: Int64 { get }
+    var description: String { get }
+}
+
+struct Status: Codable, Hashable, Describable {
     let id: Int64
     let description: String
 }
 
-struct Location: Codable, Hashable {
+struct Location: Codable, Hashable, Describable {
     let id: Int64
     let description: String
 }
 
-struct Category: Codable, Hashable {
+struct Category: Codable, Hashable, Describable {
     let id: Int64
     let description: String
 }
@@ -48,7 +53,7 @@ struct Photo: Codable {
     }
 }
 
-struct Item: Codable {
+struct Item: Codable, Hashable {
     let id: Int64
     let status: Status
     let name: String
@@ -60,5 +65,32 @@ struct Item: Codable {
     
     private enum CodingKeys : String, CodingKey {
         case id, name, price, description, status, location, seller, category
+    }
+}
+
+struct SearchFilter: Codable, Hashable {
+    var itemName: String? = nil
+    var category: Int64? = nil
+    var location: Int64? = nil
+    var seller:   Int64? = nil
+    
+    private enum CodingKeys : String, CodingKey {
+        case itemName = "item_name"
+        case category, seller, location
+    }
+    
+    func jsonRepresentation() -> [String: Any] {
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(self)
+            
+            guard let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                return [ : ]
+            }
+            
+            return dictionary
+        } catch {
+            return [ : ]
+        }
     }
 }

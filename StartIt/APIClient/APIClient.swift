@@ -23,9 +23,16 @@ protocol APIClientProtocol {
         image: Data, seqNum: Int, itemId: Int64,
         completion: @escaping (Result<T,Error>)->Void
     )
+    
+    func getData(
+        endpoint: Endpoint,
+        parameters: [String: Any]?,
+        completion: @escaping (Result<Data,Error>)->Void
+    )
 }
 
 class APIClient : APIClientProtocol {
+    
     private let baseURL = "http://127.0.0.1:8080/"
     
     func performRequest<T:Decodable>(
@@ -36,12 +43,14 @@ class APIClient : APIClientProtocol {
         completion: @escaping (Result<T,Error>)->Void
     )  {
         
-        guard let url = URL(string: baseURL + endpoint.getEndpoint()) else { return }
+        guard var url = URL(string: baseURL + endpoint.getEndpoint()) else { return }
         
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         
         if let parameters = parameters {
             components.queryItems = parameters.map { URLQueryItem(name: $0.key, value: String(describing: $0.value)) }
+            guard let newUrl = components.url else { return }
+            url = newUrl
         }
         
         var request = URLRequest(url: url)
@@ -56,7 +65,7 @@ class APIClient : APIClientProtocol {
                 print("Error serializing JSON: \(error)")
             }
         }
-
+        
         sendData(request: request, completion: completion)
     }
     
@@ -79,34 +88,58 @@ class APIClient : APIClientProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method
         
-        do {
-            var imageBody = Data()
-            let boundary = UUID().uuidString
-            imageBody.append("--\(boundary)\r\n".data(using: .utf8)!)
-            imageBody.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.png\"\r\n".data(using: .utf8)!)
-            imageBody.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
-            imageBody.append(image)
-            imageBody.append("\r\n".data(using: .utf8)!)
-            
-            // Append seqNum
-            imageBody.append("--\(boundary)\r\n".data(using: .utf8)!)
-            imageBody.append("Content-Disposition: form-data; name=\"seqNum\"\r\n\r\n".data(using: .utf8)!)
-            imageBody.append("\(seqNum)\r\n".data(using: .utf8)!)
-            
-            // Append itemName
-            imageBody.append("--\(boundary)\r\n".data(using: .utf8)!)
-            imageBody.append("Content-Disposition: form-data; name=\"item_id\"\r\n\r\n".data(using: .utf8)!)
-            imageBody.append("\(itemId)\r\n".data(using: .utf8)!)
-            
-            imageBody.append("--\(boundary)--\r\n".data(using: .utf8)!)
-            
-            request.httpBody = imageBody
-            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        } catch {
-            print("Error serializing JSON: \(error)")
-        }
-
+        
+        var imageBody = Data()
+        let boundary = UUID().uuidString
+        imageBody.append("--\(boundary)\r\n".data(using: .utf8)!)
+        imageBody.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.png\"\r\n".data(using: .utf8)!)
+        imageBody.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
+        imageBody.append(image)
+        imageBody.append("\r\n".data(using: .utf8)!)
+        
+        // Append seqNum
+        imageBody.append("--\(boundary)\r\n".data(using: .utf8)!)
+        imageBody.append("Content-Disposition: form-data; name=\"seqNum\"\r\n\r\n".data(using: .utf8)!)
+        imageBody.append("\(seqNum)\r\n".data(using: .utf8)!)
+        
+        // Append itemName
+        imageBody.append("--\(boundary)\r\n".data(using: .utf8)!)
+        imageBody.append("Content-Disposition: form-data; name=\"item_id\"\r\n\r\n".data(using: .utf8)!)
+        imageBody.append("\(itemId)\r\n".data(using: .utf8)!)
+        
+        imageBody.append("--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        request.httpBody = imageBody
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
         sendData(request: request, completion: completion)
+    }
+    
+    func getData(endpoint: Endpoint, parameters: [String : Any]?, completion: @escaping (Result<Data, Error>) -> Void) {
+        guard var url = URL(string: baseURL + endpoint.getEndpoint()) else { return }
+        
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        
+        if let parameters = parameters {
+            components.queryItems = parameters.map { URLQueryItem(name: $0.key, value: String(describing: $0.value)) }
+            guard let newUrl = components.url else { return }
+            url = newUrl
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = endpoint.method
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(ItemCreationError.photoNotFound))
+                return
+            }
+            completion(.success(data))
+        }.resume()
     }
     
     private func sendData<T: Decodable>(request: URLRequest, completion: @escaping (Result<T,Error>)->Void) {

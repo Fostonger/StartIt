@@ -95,6 +95,9 @@ enum ItemEndpoint: Endpoint {
     }
     case saveItem
     case loadImage
+    case fetchImagePath
+    case fetchImage
+    case fetchItem
     
     func getEndpoint() -> String {
         switch self {
@@ -102,6 +105,12 @@ enum ItemEndpoint: Endpoint {
             return baseRequest + "create_item"
         case .loadImage:
             return baseRequest + "upload_photo"
+        case .fetchImage:
+            return baseRequest + "fetch_image"
+        case .fetchItem:
+            return baseRequest + "fetch_item"
+        case .fetchImagePath:
+            return baseRequest + "fetch_image_path"
         }
     }
     
@@ -109,6 +118,8 @@ enum ItemEndpoint: Endpoint {
         switch self {
         case .saveItem, .loadImage:
             return "POST"
+        case .fetchImage, .fetchItem, .fetchImagePath:
+            return "GET"
         }
     }
 }

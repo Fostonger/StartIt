@@ -42,6 +42,8 @@
 		05974F212AEE8BCC00C01CF3 /* SearchItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F202AEE8BCC00C01CF3 /* SearchItemPresenter.swift */; };
 		05974F242AEE8BDC00C01CF3 /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F232AEE8BDC00C01CF3 /* SearchItemView.swift */; };
 		05974F262AEE8BFB00C01CF3 /* SearchItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F252AEE8BFB00C01CF3 /* SearchItemProtocol.swift */; };
+		05974F282AEE9A8000C01CF3 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F272AEE9A8000C01CF3 /* ItemViewCell.swift */; };
+		05974F2A2AEE9B7500C01CF3 /* ItemDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F292AEE9B7500C01CF3 /* ItemDetailedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		05974F202AEE8BCC00C01CF3 /* SearchItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemPresenter.swift; sourceTree = "<group>"; };
 		05974F232AEE8BDC00C01CF3 /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
 		05974F252AEE8BFB00C01CF3 /* SearchItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemProtocol.swift; sourceTree = "<group>"; };
+		05974F272AEE9A8000C01CF3 /* ItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
+		05974F292AEE9B7500C01CF3 /* ItemDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -415,6 +419,8 @@
 			isa = PBXGroup;
 			children = (
 				05974F232AEE8BDC00C01CF3 /* SearchItemView.swift */,
+				05974F272AEE9A8000C01CF3 /* ItemViewCell.swift */,
+				05974F292AEE9B7500C01CF3 /* ItemDetailedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -550,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05974F002AEBE0ED00C01CF3 /* AddItemProtocols.swift in Sources */,
+				05974F282AEE9A8000C01CF3 /* ItemViewCell.swift in Sources */,
 				05974F032AEBE12E00C01CF3 /* AddItemView.swift in Sources */,
 				05974EE32AEB5AC600C01CF3 /* LoginPresenter.swift in Sources */,
 				05974EDA2AE831D000C01CF3 /* LoginView.swift in Sources */,
@@ -571,6 +578,7 @@
 				05974EA82AE70E3800C01CF3 /* StartItApp.swift in Sources */,
 				05974EF62AEBAB8D00C01CF3 /* RegisterProtocols.swift in Sources */,
 				05974F242AEE8BDC00C01CF3 /* SearchItemView.swift in Sources */,
+				05974F2A2AEE9B7500C01CF3 /* ItemDetailedView.swift in Sources */,
 				05974F262AEE8BFB00C01CF3 /* SearchItemProtocol.swift in Sources */,
 				05974EF22AEBAB1600C01CF3 /* RegisterView.swift in Sources */,
 				05974EFE2AEBDFB700C01CF3 /* HomeView.swift in Sources */,
