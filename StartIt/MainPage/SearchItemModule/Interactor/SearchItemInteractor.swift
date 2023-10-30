@@ -42,4 +42,12 @@ class SearchItemInteractor: SearchItemPresenterToInteractorProtocol {
             parameters: filter.jsonRepresentation(),
             body: nil, completion: completion)
     }
+    
+    func createChat(chat: Chat, completion: @escaping (Result<Chat, Error>) -> ()) {
+        APIClient?.performRequest(
+            type: Chat.self,
+            endpoint: ChatEndpoint.createChat,
+            parameters: nil,
+            body: chat, completion: completion)
+    }
 }

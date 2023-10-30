@@ -45,6 +45,21 @@ class SearchItemPresenter: SearchItemViewToPresenterProtocol {
 
 // TODO: handle successful addition
 extension SearchItemPresenter: SearchItemInteractorToPresenter {
+    func createChat(chat: Chat) {
+        interactor?.createChat(chat: chat) { [weak self] result in
+            switch result {
+            case .success(let success):
+                self?.view?.handleChatCreation(chat: success)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    }
+    
+    func getUser() -> User? {
+        return router?.getContext().user
+    }
+    
     func success(item: Item) {
         print(item)
     }

@@ -47,12 +47,20 @@ struct HomeView: View {
             }
             .tag(0)
             
-            ProfileRouter.createModule(with: context)
+            ChatListRouter.createModule(with: context)
             .tabItem {
                 Image(systemName: "2.square.fill")
-                Text("Profile")
+                Text("Messages")
             }
             .tag(1)
+            
+            ProfileRouter.createModule(with: context)
+            .tabItem {
+                Image(systemName: "3.square.fill")
+                Text("Profile")
+            }
+            .tag(2)
+            
         }
         
 //        .alert(isPresented: $homeContext.itemCreated, content: {

@@ -123,3 +123,35 @@ enum ItemEndpoint: Endpoint {
         }
     }
 }
+
+enum ChatEndpoint: Endpoint {
+    var baseRequest: String {
+        "chat/"
+    }
+    case createChat
+    case sendMessage
+    case getMessages
+    case getChats
+    
+    func getEndpoint() -> String {
+        switch self {
+        case .createChat:
+            return baseRequest + "create_chat"
+        case .sendMessage:
+            return baseRequest + "send_message"
+        case .getMessages:
+            return baseRequest + "get_messages"
+        case .getChats:
+            return baseRequest + "get_chats"
+        }
+    }
+    
+    var method: String {
+        switch self {
+        case .createChat, .sendMessage:
+            return "POST"
+        case .getMessages, .getChats:
+            return "GET"
+        }
+    }
+}

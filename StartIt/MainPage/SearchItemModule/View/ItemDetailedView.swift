@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemDetailedView: View {
     @ObservedObject var database: DetailedViewDatabase
+    var chatCreator: ChatCreatable?
     let index: Int
     var body: some View {
         VStack {
@@ -39,16 +40,36 @@ struct ItemDetailedView: View {
             
             Divider()
                 .padding()
+            Text(String(format: "%.2f", database.items[index].price))
+                .padding()
             
             HStack {
-                Text(String(format: "%.2f", database.items[index].price))
-                    .padding()
                 Button(action: {
-                    
+                    if let chatCreator = chatCreator, let user = chatCreator.getUser() {
+                        chatCreator.createChat(chat:
+                                                Chat(id: 0,
+                                                     item: database.items[index],
+                                                     customer: user))
+                    }
                 }) {
-                    Text("Buy now")
-                        .foregroundStyle(.white)
-                        .backgroundStyle(.green)
+                    Text("Open chat")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 150)
+                        .background(Color.blue)
+                        .cornerRadius(15.0)
+                }
+                NavigationLink(destination: {
+                    ProfileRouter.createModule(with: AppContext(user: database.items[index].seller))
+                }) {
+                    Text("Seller's profile")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 150)
+                        .background(Color.blue)
+                        .cornerRadius(15.0)
                 }
             }
             

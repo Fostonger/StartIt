@@ -96,3 +96,17 @@ struct SearchFilter: Codable, Hashable {
         }
     }
 }
+
+struct Chat: Codable {
+    let id: Int64
+    let item: Item
+    let customer: User
+}
+
+struct Message: Codable, Identifiable {
+    let id: Int64
+    let chat: Chat
+    let message: String
+    let seqNumber: Int64
+    let sender: User
+}

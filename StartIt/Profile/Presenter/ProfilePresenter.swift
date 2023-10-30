@@ -31,7 +31,6 @@ class ProfilePresenter: ProfileViewToPresenterProtocol {
     
 }
 
-// TODO: handle successful addition
 extension ProfilePresenter: ProfileInteractorToPresenter {
     
 }

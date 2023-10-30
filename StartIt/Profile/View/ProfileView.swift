@@ -59,11 +59,8 @@ extension ProfileView: ProfilePresenterToViewProtocol {
                   let uiImage = UIImage(data: image) else {
                 return
             }
-            let parameter = 200 / uiImage.size.width
-            let newImage = uiImage.resizeImage(targetSize: CGSize(
-                width: uiImage.size.width * parameter,
-                height: uiImage.size.height * parameter
-            ))
+            
+            let newImage = uiImage.normalizeByWidth(targetWidth: 200)
             database.images[itemIndex] = Image(uiImage: newImage)
         }
     }

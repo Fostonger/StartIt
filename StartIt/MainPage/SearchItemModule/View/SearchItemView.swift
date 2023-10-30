@@ -16,6 +16,8 @@ class DetailedViewDatabase: ObservableObject {
 class SearchItemViewDatabase: DetailedViewDatabase {
     @Published var locations: [Location] = []
     @Published var categories: [Category]
+    var chatToPresent: Chat? = nil
+    @Published var shouldPresentChat: Bool = false
     
     init(presenter: SearchItemViewToPresenterProtocol?) {
         var categories = presenter?.router?.getContext().categories ?? []
@@ -55,7 +57,7 @@ struct SearchItemView: View {
     var body: some View {
         NavigationView {
             List(database.items.indices, id: \.self) { index in
-                NavigationLink(destination: ItemDetailedView(database: database, index: index)) {
+                NavigationLink(destination: ItemDetailedView(database: database, chatCreator: presenter, index: index)) {
                     ItemViewCell(item: database.items[index], image: database.images[index])
                 }
             }
@@ -85,6 +87,17 @@ struct SearchItemView: View {
                     }) {
                         Image(systemName: "slider.horizontal.3")
                     }
+                    if let chatToPresent = database.chatToPresent,
+                        let context = presenter?.router?.getContext() {
+                        NavigationLink(
+                            destination: ChatRouter.createModule(
+                                with: chatToPresent,
+                                context: context),
+                            isActive: $database.shouldPresentChat
+                        ) {
+                            EmptyView()
+                        }
+                    }
                 }
             )
         }
@@ -92,6 +105,13 @@ struct SearchItemView: View {
 }
 
 extension SearchItemView: SearchItemPresenterToViewProtocol {
+    func handleChatCreation(chat: Chat) {
+        DispatchQueue.main.async {
+            self.database.chatToPresent = chat
+            self.database.shouldPresentChat = true
+        }
+    }
+    
     func handleItemsFetch(_ items: [Item]) {
         DispatchQueue.main.async {
             self.database.items = items
@@ -105,11 +125,7 @@ extension SearchItemView: SearchItemPresenterToViewProtocol {
                   let uiImage = UIImage(data: image) else {
                 return
             }
-            let parameter = 200 / uiImage.size.width
-            let newImage = uiImage.resizeImage(targetSize: CGSize(
-                width: uiImage.size.width * parameter,
-                height: uiImage.size.height * parameter
-            ))
+            let newImage = uiImage.normalizeByWidth(targetWidth: 200)
             database.images[itemIndex] = Image(uiImage: newImage)
         }
     }
