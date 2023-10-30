@@ -8,6 +8,8 @@
 import Foundation
 
 struct User: Codable, Hashable {
+    static let defaultUser = User(id: 1, name: "Fost", familyName: "Musin", isuNumber: 12, username: "Fost", password: "Fost")
+    
     let id: Int64
     let name: String
     let familyName: String

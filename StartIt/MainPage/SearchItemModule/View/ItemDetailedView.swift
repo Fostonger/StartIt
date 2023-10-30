@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemDetailedView: View {
-    @ObservedObject var database: SearchItemViewDatabase
+    @ObservedObject var database: DetailedViewDatabase
     let index: Int
     var body: some View {
         VStack {

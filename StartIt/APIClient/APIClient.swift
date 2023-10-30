@@ -62,7 +62,7 @@ class APIClient : APIClientProtocol {
                 request.httpBody = jsonData
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             } catch {
-                print("Error serializing JSON: \(error)")
+//                print("Error serializing JSON: \(error)")
             }
         }
         
@@ -149,7 +149,7 @@ class APIClient : APIClientProtocol {
                 return
             }
             do {
-                print(String(data: data!, encoding: .utf8))
+//                print(String(data: data!, encoding: .utf8))
                 let responseData = try JSONDecoder().decode(T.self, from: data!)
                 completion(.success(responseData))
             }

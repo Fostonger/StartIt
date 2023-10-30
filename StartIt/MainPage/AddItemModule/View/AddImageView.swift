@@ -43,8 +43,13 @@ struct AddImageView: View {
                 
                 Button(action: {
                     if let image = imagePicker.image {
+                        let parameter = 200 / image.size.width
+                        let newImage = image.resizeImage(targetSize: CGSize(
+                            width: image.size.width * parameter,
+                            height: image.size.height * parameter
+                        ))
                         presenter?.sendPhoto(
-                            image.jpegData(compressionQuality: 0)!
+                            newImage.jpegData(compressionQuality: 0)!
                         ) { result in
                             self.parentView?.presentationMode.wrappedValue.dismiss()
                         }

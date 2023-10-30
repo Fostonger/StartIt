@@ -8,16 +8,20 @@
 import SwiftUI
 
 @MainActor
-class SearchItemViewDatabase: ObservableObject {
-    @Published var items: [Item] = []
+class DetailedViewDatabase: ObservableObject {
     @Published var images: [Image?] = []
-    @Published var locations: [Location]
+    @Published var items: [Item] = []
+}
+
+class SearchItemViewDatabase: DetailedViewDatabase {
+    @Published var locations: [Location] = []
     @Published var categories: [Category]
     
     init(presenter: SearchItemViewToPresenterProtocol?) {
         var categories = presenter?.router?.getContext().categories ?? []
         categories.insert(Category(id: -1, description: "Not selected"), at: 0)
         self.categories = categories
+        super.init()
         
         var locations = presenter?.router?.getContext().locations ?? []
         locations.insert(Location(id: -1, description: "Not selected"), at: 0)
@@ -102,18 +106,11 @@ extension SearchItemView: SearchItemPresenterToViewProtocol {
                 return
             }
             let parameter = 200 / uiImage.size.width
-            let newImage = resizeImage(image: uiImage, targetSize: CGSize(
+            let newImage = uiImage.resizeImage(targetSize: CGSize(
                 width: uiImage.size.width * parameter,
                 height: uiImage.size.height * parameter
             ))
             database.images[itemIndex] = Image(uiImage: newImage)
-        }
-    }
-    
-    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
-        let renderer = UIGraphicsImageRenderer(size: targetSize)
-        return renderer.image { (context) in
-            image.draw(in: CGRect(origin: .zero, size: targetSize))
         }
     }
     

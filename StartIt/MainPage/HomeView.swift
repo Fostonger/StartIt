@@ -47,10 +47,10 @@ struct HomeView: View {
             }
             .tag(0)
             
-            AddItemRouter.createModule(context: context, homeContext: homeContext)
+            ProfileRouter.createModule(with: context)
             .tabItem {
                 Image(systemName: "2.square.fill")
-                Text("Add item")
+                Text("Profile")
             }
             .tag(1)
         }
