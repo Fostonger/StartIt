@@ -107,6 +107,6 @@ struct Message: Codable, Identifiable {
     let id: Int64
     let chat: Chat
     let message: String
-    let seqNumber: Int64
+    let seqNumber: Int
     let sender: User
 }

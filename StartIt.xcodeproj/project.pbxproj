@@ -50,6 +50,18 @@
 		05974F392AEF278000C01CF3 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F382AEF278000C01CF3 /* ProfilePresenter.swift */; };
 		05974F3B2AEF278800C01CF3 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F3A2AEF278800C01CF3 /* ProfileRouter.swift */; };
 		05974F3D2AEF321B00C01CF3 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F3C2AEF321B00C01CF3 /* UIImage+Resize.swift */; };
+		05974F442AEF449F00C01CF3 /* ChatProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F432AEF449F00C01CF3 /* ChatProtocol.swift */; };
+		05974F462AEFA9B800C01CF3 /* ChatVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F452AEFA9B800C01CF3 /* ChatVIew.swift */; };
+		05974F512AEFAC4000C01CF3 /* ChatListVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F4F2AEFAC4000C01CF3 /* ChatListVIew.swift */; };
+		05974F532AEFAC6600C01CF3 /* ChatListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F522AEFAC6600C01CF3 /* ChatListProtocol.swift */; };
+		05974F552AEFB08800C01CF3 /* ChatListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F542AEFB08800C01CF3 /* ChatListPresenter.swift */; };
+		05974F572AEFB09600C01CF3 /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F562AEFB09600C01CF3 /* ChatPresenter.swift */; };
+		05974F592AEFB4DB00C01CF3 /* ItemPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F582AEFB4DB00C01CF3 /* ItemPreviewView.swift */; };
+		05974F5B2AEFB5E100C01CF3 /* ChatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F5A2AEFB5E100C01CF3 /* ChatInteractor.swift */; };
+		05974F5D2AEFB9FB00C01CF3 /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F5C2AEFB9FB00C01CF3 /* ChatRouter.swift */; };
+		05974F5F2AEFBD3200C01CF3 /* ChatListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F5E2AEFBD3200C01CF3 /* ChatListCellView.swift */; };
+		05974F612AEFC09300C01CF3 /* ChatListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F602AEFC09300C01CF3 /* ChatListInteractor.swift */; };
+		05974F632AEFC0EC00C01CF3 /* ChatListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05974F622AEFC0EC00C01CF3 /* ChatListRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +128,18 @@
 		05974F382AEF278000C01CF3 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		05974F3A2AEF278800C01CF3 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		05974F3C2AEF321B00C01CF3 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		05974F432AEF449F00C01CF3 /* ChatProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProtocol.swift; sourceTree = "<group>"; };
+		05974F452AEFA9B800C01CF3 /* ChatVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVIew.swift; sourceTree = "<group>"; };
+		05974F4F2AEFAC4000C01CF3 /* ChatListVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListVIew.swift; sourceTree = "<group>"; };
+		05974F522AEFAC6600C01CF3 /* ChatListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListProtocol.swift; sourceTree = "<group>"; };
+		05974F542AEFB08800C01CF3 /* ChatListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListPresenter.swift; sourceTree = "<group>"; };
+		05974F562AEFB09600C01CF3 /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
+		05974F582AEFB4DB00C01CF3 /* ItemPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPreviewView.swift; sourceTree = "<group>"; };
+		05974F5A2AEFB5E100C01CF3 /* ChatInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInteractor.swift; sourceTree = "<group>"; };
+		05974F5C2AEFB9FB00C01CF3 /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
+		05974F5E2AEFBD3200C01CF3 /* ChatListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCellView.swift; sourceTree = "<group>"; };
+		05974F602AEFC09300C01CF3 /* ChatListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListInteractor.swift; sourceTree = "<group>"; };
+		05974F622AEFC0EC00C01CF3 /* ChatListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +190,7 @@
 		05974EA62AE70E3800C01CF3 /* StartIt */ = {
 			isa = PBXGroup;
 			children = (
+				05974F3E2AEF445100C01CF3 /* Chats */,
 				05974F2B2AEF26BC00C01CF3 /* Profile */,
 				05974EFA2AEBDF7700C01CF3 /* MainPage */,
 				05974EF92AEBDF6500C01CF3 /* Login */,
@@ -324,7 +349,6 @@
 			children = (
 				05974F182AEE8B8500C01CF3 /* SearchItemModule */,
 				05974F072AEBEFCB00C01CF3 /* Util */,
-				05974EFC2AEBDF9400C01CF3 /* HomeModule */,
 				05974EFB2AEBDF8200C01CF3 /* AddItemModule */,
 				05974EFD2AEBDFB700C01CF3 /* HomeView.swift */,
 			);
@@ -341,13 +365,6 @@
 				05974EFF2AEBE0ED00C01CF3 /* AddItemProtocols.swift */,
 			);
 			path = AddItemModule;
-			sourceTree = "<group>";
-		};
-		05974EFC2AEBDF9400C01CF3 /* HomeModule */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HomeModule;
 			sourceTree = "<group>";
 		};
 		05974F012AEBE12400C01CF3 /* View */ = {
@@ -481,6 +498,105 @@
 				05974F342AEF277100C01CF3 /* ProfileView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		05974F3E2AEF445100C01CF3 /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				05974F4A2AEFABF100C01CF3 /* Chat */,
+				05974F482AEFABBD00C01CF3 /* ChatList */,
+			);
+			path = Chats;
+			sourceTree = "<group>";
+		};
+		05974F3F2AEF445900C01CF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				05974F452AEFA9B800C01CF3 /* ChatVIew.swift */,
+				05974F582AEFB4DB00C01CF3 /* ItemPreviewView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		05974F402AEF446000C01CF3 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				05974F5A2AEFB5E100C01CF3 /* ChatInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		05974F412AEF448600C01CF3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				05974F562AEFB09600C01CF3 /* ChatPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		05974F422AEF448E00C01CF3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				05974F5C2AEFB9FB00C01CF3 /* ChatRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		05974F482AEFABBD00C01CF3 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				05974F502AEFAC4000C01CF3 /* Interactor */,
+				05974F4B2AEFAC4000C01CF3 /* Presenter */,
+				05974F4C2AEFAC4000C01CF3 /* Router */,
+				05974F4E2AEFAC4000C01CF3 /* View */,
+				05974F522AEFAC6600C01CF3 /* ChatListProtocol.swift */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
+		05974F4A2AEFABF100C01CF3 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				05974F432AEF449F00C01CF3 /* ChatProtocol.swift */,
+				05974F422AEF448E00C01CF3 /* Router */,
+				05974F412AEF448600C01CF3 /* Presenter */,
+				05974F402AEF446000C01CF3 /* Interactor */,
+				05974F3F2AEF445900C01CF3 /* View */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		05974F4B2AEFAC4000C01CF3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				05974F542AEFB08800C01CF3 /* ChatListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		05974F4C2AEFAC4000C01CF3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				05974F622AEFC0EC00C01CF3 /* ChatListRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		05974F4E2AEFAC4000C01CF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				05974F4F2AEFAC4000C01CF3 /* ChatListVIew.swift */,
+				05974F5E2AEFBD3200C01CF3 /* ChatListCellView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		05974F502AEFAC4000C01CF3 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				05974F602AEFC09300C01CF3 /* ChatListInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -617,33 +733,45 @@
 				05974F282AEE9A8000C01CF3 /* ItemViewCell.swift in Sources */,
 				05974F032AEBE12E00C01CF3 /* AddItemView.swift in Sources */,
 				05974EE32AEB5AC600C01CF3 /* LoginPresenter.swift in Sources */,
+				05974F592AEFB4DB00C01CF3 /* ItemPreviewView.swift in Sources */,
 				05974EDA2AE831D000C01CF3 /* LoginView.swift in Sources */,
+				05974F532AEFAC6600C01CF3 /* ChatListProtocol.swift in Sources */,
 				05974EDE2AEB4D0F00C01CF3 /* APIEndpoint.swift in Sources */,
+				05974F612AEFC09300C01CF3 /* ChatListInteractor.swift in Sources */,
 				05974F0F2AEBF64200C01CF3 /* AppContext.swift in Sources */,
 				05974EAA2AE70E3800C01CF3 /* ContentView.swift in Sources */,
+				05974F442AEF449F00C01CF3 /* ChatProtocol.swift in Sources */,
 				05974EF02AEBAADE00C01CF3 /* RegisterRouter.swift in Sources */,
 				05974F062AEBEBC900C01CF3 /* AddItemPresenter.swift in Sources */,
 				05974F212AEE8BCC00C01CF3 /* SearchItemPresenter.swift in Sources */,
+				05974F462AEFA9B800C01CF3 /* ChatVIew.swift in Sources */,
 				05974EE02AEB556300C01CF3 /* Structs.swift in Sources */,
 				05974EF82AEBB8E600C01CF3 /* RegisterInteractor.swift in Sources */,
 				05974F1B2AEE8BAB00C01CF3 /* SearchItemRouter.swift in Sources */,
 				05974F392AEF278000C01CF3 /* ProfilePresenter.swift in Sources */,
+				05974F572AEFB09600C01CF3 /* ChatPresenter.swift in Sources */,
 				05974F112AEC00AC00C01CF3 /* AddImageView.swift in Sources */,
 				05974F0A2AEBF12200C01CF3 /* AddItemInteractor.swift in Sources */,
+				05974F5D2AEFB9FB00C01CF3 /* ChatRouter.swift in Sources */,
 				05974ED62AE830D400C01CF3 /* LoginProtocol.swift in Sources */,
 				05974EF42AEBAB4900C01CF3 /* RegisterPresenter.swift in Sources */,
 				05974EDC2AEB4B6300C01CF3 /* APIClient.swift in Sources */,
 				05974F172AEE622F00C01CF3 /* Errors.swift in Sources */,
 				05974F3B2AEF278800C01CF3 /* ProfileRouter.swift in Sources */,
 				05974EA82AE70E3800C01CF3 /* StartItApp.swift in Sources */,
+				05974F632AEFC0EC00C01CF3 /* ChatListRouter.swift in Sources */,
+				05974F552AEFB08800C01CF3 /* ChatListPresenter.swift in Sources */,
 				05974EF62AEBAB8D00C01CF3 /* RegisterProtocols.swift in Sources */,
 				05974F242AEE8BDC00C01CF3 /* SearchItemView.swift in Sources */,
 				05974F332AEF270700C01CF3 /* ProfileProtocol.swift in Sources */,
+				05974F5B2AEFB5E100C01CF3 /* ChatInteractor.swift in Sources */,
 				05974F2A2AEE9B7500C01CF3 /* ItemDetailedView.swift in Sources */,
 				05974F262AEE8BFB00C01CF3 /* SearchItemProtocol.swift in Sources */,
 				05974F352AEF277100C01CF3 /* ProfileView.swift in Sources */,
 				05974F372AEF277900C01CF3 /* ProfileInteractor.swift in Sources */,
+				05974F512AEFAC4000C01CF3 /* ChatListVIew.swift in Sources */,
 				05974EF22AEBAB1600C01CF3 /* RegisterView.swift in Sources */,
+				05974F5F2AEFBD3200C01CF3 /* ChatListCellView.swift in Sources */,
 				05974EFE2AEBDFB700C01CF3 /* HomeView.swift in Sources */,
 				05974F0D2AEBF5EE00C01CF3 /* AddItemRouter.swift in Sources */,
 				05974F3D2AEF321B00C01CF3 /* UIImage+Resize.swift in Sources */,

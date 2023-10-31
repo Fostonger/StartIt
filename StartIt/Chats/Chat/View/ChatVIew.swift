@@ -14,7 +14,7 @@ class ChatViewDatabase: ObservableObject {
     @Published var item: Item? = nil
     @Published var image: Image? = nil
     
-    var lastMessageNumber: Int64 {
+    var lastMessageNumber: Int {
         messages.min(by: { $0.seqNumber > $1.seqNumber })?.seqNumber ?? 0
     }
 }
@@ -61,7 +61,7 @@ struct ChatView: View {
               let user = presenter?.router?.getContext().user else { return }
         
         let message = Message(id: 0, chat: chat, message: newMessage,
-                              seqNumber: database.lastMessageNumber + 1, sender: user)
+                              seqNumber: database.lastMessageNumber + 1 as! Int, sender: user)
         presenter?.sendMessage(message)
         
         newMessage = ""

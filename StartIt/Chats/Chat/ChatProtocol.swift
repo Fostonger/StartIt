@@ -32,12 +32,12 @@ protocol ChatPresenterToInteractorProtocol {
     var presenter: ChatInteractorToPresenter? { get set }
     
     func fetchMessages(chat: Chat, completion: @escaping (Result<[Message], Error>) -> ())
-    func sendMessage(message: Message, completion: @escaping (Result<Bool, Error>) -> ())
+    func sendMessage(message: Message, completion: @escaping (Result<Message, Error>) -> ())
     
 }
 
 protocol ChatInteractorToPresenter {
-    
+    func handleMessages(_ messages: [Message])
 }
 
 protocol ChatPresenterToRouterProtocol {

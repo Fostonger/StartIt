@@ -52,5 +52,9 @@ class ChatPresenter: ChatViewToPresenterProtocol {
 }
 
 extension ChatPresenter: ChatInteractorToPresenter {
+    func handleMessages(_ messages: [Message]) {
+        view?.handleMessagesFetch(messages)
+    }
+    
     
 }
