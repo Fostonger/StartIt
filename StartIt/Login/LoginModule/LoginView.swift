@@ -1,30 +1,25 @@
 import SwiftUI
 
-struct LoginView: View {
-    @State private var username: String = ""
-    @State private var password: String = ""
-    @State private var alertIsPresented = false
-    @State private var alertMessage = ""
-    
-    var presenter: LoginViewToPresenterProtocol?
+struct LoginView<Model>: View where Model:LoginViewModelInterface {
+    @StateObject private var viewModel: Model
     
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Username", text: $username)
+                TextField("Username", text: $viewModel.loginModel.email)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5.0)
                     .padding(.bottom, 20)
                 
-                SecureField("Password", text: $password)
+                SecureField("Password", text: $viewModel.loginModel.password)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5.0)
                     .padding(.bottom, 20)
                 
                 Button(action: {
-                    presenter?.login(username: username, password: password)
+                    viewModel.login()
                 }) {
                     Text("Login")
                         .font(.headline)
@@ -34,10 +29,10 @@ struct LoginView: View {
                         .background(Color.blue)
                         .cornerRadius(15.0)
                 }
-                .alert(isPresented: $alertIsPresented, content: {
+                .alert(isPresented: $viewModel.presentAlert, content: {
                     Alert(
                         title: Text("Error"),
-                        message: Text(alertMessage),
+                        message: Text(viewModel.errorMessage),
                         dismissButton: .default(Text("OK"))
                     )
                 })
@@ -49,13 +44,6 @@ struct LoginView: View {
             }
             .padding()
         }
-    }
-}
-
-extension LoginView: LoginPresenterToViewProtocol {
-     func error(message: String) {
-        alertMessage = message
-        alertIsPresented = true
     }
 }
 

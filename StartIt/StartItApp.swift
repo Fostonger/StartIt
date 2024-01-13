@@ -6,19 +6,22 @@
 //
 
 import SwiftUI
+import Alamofire
 
 @main
 struct StartItApp: App {
-    @State private var user: User? = User.defaultUser
+    @StateObject private var appStateService = UserDefaultAppState(with: UserDefaults.standard)
+    
     var body: some Scene {
+        let apiClient = MIAPIClient(with: AF, credentialsProvider: appStateService)
         WindowGroup {
-            if user == nil {
-                LoginRouter.createModule { user in
-                    self.user = user
-                }
-            } else {
-                HomeView(context: AppContext(user: user!))
-            }
+            if appStateService.userCredentials == nil {
+                let viewModel = MockLoginViewModel.loginViewModel
+//                let viewModel = LoginViewModel(apiClient: apiClient)
+                LoginView(viewModel: viewModel)
+            } //else {
+//                HomeView(context: AppContext(user: user!))
+//            }
         
         }
     }
