@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import Combine
+
+protocol Fetchable {
+    func fetch<T: Encodable, U: Decodable>(with endpoint: Endpoint, parameters: T, responseType: U.Type) -> AnyPublisher<U, APIError>
+    func fetch<U: Decodable>(with endpoint: Endpoint, responseType: U.Type) -> AnyPublisher<U, APIError>
+}

@@ -8,7 +8,7 @@
 import Foundation
 
 class AddItemInteractor: AddItemPresenterToInteractorProtocol {
-    var APIClient: APIClientProtocol?
+    var APIClient: APIClient?
     
     var presenter: AddItemInteractorToPresenter?
     

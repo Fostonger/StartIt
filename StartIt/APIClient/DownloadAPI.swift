@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import Combine
+
+protocol Downloadable {
+    func downloadData(from url: URL) -> AnyPublisher<Data?, APIError>
+}

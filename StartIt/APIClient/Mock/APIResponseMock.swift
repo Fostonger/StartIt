@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+public final class MockedData {
+    public static let successAuthJSON: URL = Bundle(for: MockedData.self).url(forResource: "Success", withExtension: "json")!
+}

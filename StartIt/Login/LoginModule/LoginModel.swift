@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct LoginModel: Encodable {
+    var email: String? = nil
+    var password: String? = nil
+}

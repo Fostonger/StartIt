@@ -6,9 +6,21 @@
 //
 
 import Foundation
+import Alamofire
 
-enum StartItError: Error {
-    case authNotProvided
-    case imageDataError
-    case imageDownloadError
+enum APIError: Error {
+    case auth(message: String)
+    case dataCorrupted(message: String)
+    case download(message: String)
+    case request(message: String)
+    case other(message: String)
+    case statusCode(message: String)
+    case network(error: AFError)
+    
+    static func map(_ error: Error) -> APIError {
+        if let afError = error as? AFError {
+            return .network(error: afError)
+        }
+        return (error as? APIError) ?? .other(message: error.localizedDescription)
+    }
 }

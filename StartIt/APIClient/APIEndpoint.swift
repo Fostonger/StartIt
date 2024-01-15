@@ -6,33 +6,44 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol Endpoint {
     func getEndpoint() -> String
-    var method: String { get }
+    var method: HTTPMethod { get }
+    var headers: HTTPHeaders { get }
+    var authRequired: Bool { get }
 }
 
-enum LoginEndpoint: Endpoint {
+extension Endpoint {
+    var method: HTTPMethod      { .get }
+    var authRequired: Bool      { true }
+    var headers: HTTPHeaders    { [.accept("application/json")] }
+}
+
+enum AuthEndpoint: Endpoint {
     case login
     case register
     
     func getEndpoint() -> String {
         switch self {
         case .login:
-            return "login"
+            return endpointBase + "login"
         case .register:
-            return "register"
+            return endpointBase + "register"
         }
     }
     
-    var method: String {
+    var method: HTTPMethod {
         switch self {
-        case .login:
-            return "POST"
-        case .register:
-            return "POST"
+        case .login, .register:
+            return .post
         }
     }
+    
+    var authRequired: Bool { false }
+    
+    private var endpointBase: String { "auth/" }
 }
 
 enum CategoryEndpoint: Endpoint {
@@ -42,13 +53,6 @@ enum CategoryEndpoint: Endpoint {
         switch self {
         case .categories:
             return "categories"
-        }
-    }
-    
-    var method: String {
-        switch self {
-        case .categories:
-            return "GET"
         }
     }
 }
@@ -62,13 +66,6 @@ enum LocationEndpoint: Endpoint {
             return "locations"
         }
     }
-    
-    var method: String {
-        switch self {
-        case .location:
-            return "GET"
-        }
-    }
 }
 
 enum StatusEndpoint: Endpoint {
@@ -80,19 +77,9 @@ enum StatusEndpoint: Endpoint {
             return "statuses"
         }
     }
-    
-    var method: String {
-        switch self {
-        case .status:
-            return "GET"
-        }
-    }
 }
 
 enum ItemEndpoint: Endpoint {
-    var baseRequest: String {
-        "add_item/"
-    }
     case saveItem
     case loadImage
     case fetchImagePath
@@ -114,20 +101,19 @@ enum ItemEndpoint: Endpoint {
         }
     }
     
-    var method: String {
+    var method: HTTPMethod {
         switch self {
         case .saveItem, .loadImage:
-            return "POST"
+            return .post
         case .fetchImage, .fetchItem, .fetchImagePath:
-            return "GET"
+            return .get
         }
     }
+    
+    private var baseRequest: String { "add_item/" }
 }
 
 enum ChatEndpoint: Endpoint {
-    var baseRequest: String {
-        "chat/"
-    }
     case createChat
     case sendMessage
     case getMessages
@@ -146,12 +132,14 @@ enum ChatEndpoint: Endpoint {
         }
     }
     
-    var method: String {
+    var method: HTTPMethod {
         switch self {
         case .createChat, .sendMessage:
-            return "POST"
+            return .post
         case .getMessages, .getChats:
-            return "GET"
+            return .post
         }
     }
+    
+    private var baseRequest: String { "chat/" }
 }

@@ -1,85 +1,61 @@
 import SwiftUI
 
 
-struct RegisterView: View {
-    @State private var username: String = ""
-    @State private var password: String = ""
-    @State private var firstName: String = ""
-    @State private var secondName: String = ""
-    @State private var isu: String = ""
+struct RegisterView<Model>: View where Model:RegisterViewModelInterface {
+    @StateObject var viewModel: Model
     @State private var alertIsPresented = false
     @State private var alertMessage = ""
-    
-    var presenter : RegisterViewToPresenterProtocol?
     
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Username", text: $username)
+                TextField("Username", text: $viewModel.registerModel.username ?! "")
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(5.0)
+                    .padding(.bottom, 20)
+                    .textInputAutocapitalization(.never)
+                
+                SecureField("Password", text: $viewModel.registerModel.password ?! "")
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5.0)
                     .padding(.bottom, 20)
                 
-                SecureField("Password", text: $password)
+                TextField("First name", text: $viewModel.registerModel.firstName ?! "")
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5.0)
                     .padding(.bottom, 20)
-                
-                TextField("First name", text: $firstName)
+                TextField("Second name", text: $viewModel.registerModel.secondName ?! "")
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5.0)
                     .padding(.bottom, 20)
-                TextField("Second name", text: $secondName)
+                TextField("ISU number", text: $viewModel.registerModel.isu ?! "")
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5.0)
                     .padding(.bottom, 20)
-                TextField("ISU number", text: $isu)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(5.0)
-                    .padding(.bottom, 20)
-                
-                Button(action: {
-                    presenter?.register(user: User(
-                        id: 100, name: firstName, familyName: secondName,
-                        isuNumber: Int(isu) ?? 0, username: username, password: password))
-                }) {
-                    Text("Register")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(width: 220, height: 60)
-                        .background(Color.blue)
-                        .cornerRadius(15.0)
+                MIButton(title: "Register", disabled: $viewModel.registerButtonDisabled) {
+                    viewModel.register()
                 }
-                .alert(isPresented: $alertIsPresented, content: {
-                    Alert(
-                        title: Text("Error"),
-                        message: Text(alertMessage),
-                        dismissButton: .default(Text("OK"))
-                    )
-                })
                 Spacer()
             }
             .padding()
         }
+        .alert(isPresented: $viewModel.presentAlert, content: {
+            Alert(
+                title: Text("Error"),
+                message: Text(viewModel.errorMessage ?? ""),
+                dismissButton: .default(Text("OK"))
+            )
+        })
     }
 }
 
-extension RegisterView: RegisterPresenterToViewProtocol {
-    func error(message: String) {
-        alertMessage = message
-        alertIsPresented.toggle()
-    }
-}
-
-
-struct RegisterView_Previews: PreviewProvider {
+struct registerView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView()
+        RegisterView(viewModel: MockRegisterViewModel.registerViewModel)
     }
 }
