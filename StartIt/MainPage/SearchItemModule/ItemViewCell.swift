@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItemViewCell: View {
     var item: Item
-    @State var image: Image? = nil
+    @Binding var image: Image?
     
     var body: some View {
         VStack {
@@ -43,12 +43,6 @@ struct ItemViewCell: View {
     }
 }
 
-#Preview {
-    let item = Item(id: 1, status: Status(id: 1, description: "On Stock"), name: "Capp",
-                    price: 12, description: "Nice Capp for you and your great friends dear customer!!!",
-                    location: Location(id: 1, description: "LOMO"),
-                    category: Category(id: 1, description: "Just cap"),
-                    seller: User(id: 1, name: "Seller", familyName: "Sellth", isuNumber: 311,
-                                 username: "bestseller", password: "123456"))
-    return ItemViewCell(item: item, image: Image(systemName: "photo"))
-}
+//#Preview {
+//    return ItemViewCell(item: MockSearchView.MockItem, image: Image(systemName: "photo"))
+//}

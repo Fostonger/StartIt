@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Combine
 
-protocol AppStateService: ObservableObject {
+protocol AuthStateService: ObservableObject {
     var userCredentials: Credentials? { get }
     var token: String? { get }
     var expirationDate: Date? { get }
@@ -15,7 +16,50 @@ protocol AppStateService: ObservableObject {
     func setToken(_ token: String, expirationDate: Int32?)
 }
 
-final class UserDefaultAppState: AppStateService {
+protocol AppStateService {
+    var searchOptions: ItemCatalogModel { get set }
+    var searchOptionsPublisher: Published<ItemCatalogModel>.Publisher { get }
+    func fetchSearchOptions()
+}
+
+final class MIAppStateService: AppStateService, ObservableObject {
+    var searchOptionsPublisher: Published<ItemCatalogModel>.Publisher { $searchOptions }
+    @Published var searchOptions: ItemCatalogModel
+    private let apiClient: APIClient
+    private var cancellables: Set<AnyCancellable> = []
+    
+    required init(apiClient: APIClient) {
+        self.apiClient = apiClient
+        _searchOptions = Published(initialValue: ItemCatalogModel())
+    }
+    
+    func fetchSearchOptions() {
+        if searchOptions.locations.count < 2 {
+            fetchData(endpoint: LocationEndpoint.location, keyPath: \.locations)
+        }
+        if searchOptions.categories.count < 2 {
+            fetchData(endpoint: CategoryEndpoint.categories, keyPath: \.categories)
+        }
+    }
+    
+    private func fetchData<T: Decodable>(endpoint: Endpoint, keyPath: WritableKeyPath<ItemCatalogModel, [T]>) {
+        apiClient.fetch(with: endpoint, responseType: [T].self)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error)
+                }
+            } receiveValue: { [weak self] values in
+                self?.searchOptions[keyPath: keyPath].append(contentsOf: values)
+            }
+            .store(in: &cancellables)
+    }
+}
+
+final class UserDefaultAppState: AuthStateService {
     @Published private (set) var userCredentials: Credentials?
     private (set) var token: String? {
         get {

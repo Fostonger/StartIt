@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MockUserDefaultAppState: AppStateService {
+final class MockUserDefaultAppState: AuthStateService {
     @Published private (set) var userCredentials: Credentials?
     private (set) var token: String? {
         get {

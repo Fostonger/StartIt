@@ -11,7 +11,7 @@ import Combine
 
 protocol APIClient: Downloadable, Fetchable { }
 
-final class MIAPIClient<AppService>: APIClient where AppService: AppStateService {
+final class MIAPIClient<AppService>: APIClient where AppService: AuthStateService {
     private let credentialsProvider: AppService
     private let encoder: ParameterEncoder
     private let client: Session
@@ -21,6 +21,7 @@ final class MIAPIClient<AppService>: APIClient where AppService: AppStateService
         
         let defaultEncoder = JSONParameterEncoder()
         defaultEncoder.encoder.outputFormatting = .prettyPrinted
+        defaultEncoder.encoder.keyEncodingStrategy = .convertToSnakeCase
         self.encoder = encoder != nil ? encoder! : defaultEncoder
         self.client = client
     }
@@ -46,7 +47,7 @@ final class MIAPIClient<AppService>: APIClient where AppService: AppStateService
             headers.add(.authorization(bearerToken: credentialsProvider.token!))
         }
         
-        return client.request(baseUrl + endpoint.getEndpoint(),
+        return client.request(endpoint.urlString,
                               method: endpoint.method,
                               parameters: parameters,
                               encoder: encoder,
@@ -88,7 +89,7 @@ final class MIAPIClient<AppService>: APIClient where AppService: AppStateService
         let endpoint = AuthEndpoint.login
         let headers = endpoint.headers
         
-        return client.request(baseUrl + endpoint.getEndpoint(),
+        return client.request(endpoint.urlString,
                               method: endpoint.method,
                               parameters: credentialsProvider.userCredentials,
                               encoder: encoder,
@@ -116,27 +117,47 @@ final class MIAPIClient<AppService>: APIClient where AppService: AppStateService
         })
         .eraseToAnyPublisher()
     }
-    
-    private var baseUrl: String {
-        "http://147.78.66.203:3210/"
-    }
 }
 
 extension MIAPIClient: Downloadable {
-    func downloadData(from url: URL) -> AnyPublisher<Data?, APIError> {
-        client.request(url)
-            .validate()
-            .publishData()
-            .tryMap { response -> Data? in
-                guard
-                    let httpURLResponse = response.response,
-                    httpURLResponse.statusCode == 200
-                else {
-                    throw APIError.statusCode(message: "Invalid Status Code")
-                }
-                return response.data
+    func downloadData(with endpoint: Endpoint) -> AnyPublisher<Data, APIError> {
+        _download(with: endpoint, parameters: Optional<Int>.none)
+    }
+    
+    func downloadData<T: Encodable>(with endpoint: Endpoint, parameters: T) -> AnyPublisher<Data, APIError> {
+        _download(with: endpoint, parameters: parameters)
+    }
+    
+    private func _download<T: Encodable>(with endpoint: Endpoint, parameters: T? = nil) -> AnyPublisher<Data, APIError> {
+        guard case .get = endpoint.method else {
+            return Fail(error: APIError.download(message: "Download should have GET method"))
+                .eraseToAnyPublisher()
+        }
+        
+        var headers = endpoint.headers
+        
+        if endpoint.authRequired {
+            headers.add(.authorization(bearerToken: credentialsProvider.token!))
+        }
+        
+        return client.request(endpoint.urlString,
+                              parameters: parameters,
+                              encoder: encoder,
+                              headers: headers)
+        .validate()
+        .publishData()
+        .tryMap { response -> Data in
+            guard let httpURLResponse = response.response,
+                  httpURLResponse.statusCode == 200
+            else {
+                throw APIError.statusCode(message: "Invalid Status Code")
             }
-            .mapError { APIError.map($0) }
-            .eraseToAnyPublisher()
+            guard let data = response.data else {
+                throw APIError.download(message: "Couldn't get data from response")
+            }
+            return data
+        }
+        .mapError { APIError.map($0) }
+        .eraseToAnyPublisher()
     }
 }

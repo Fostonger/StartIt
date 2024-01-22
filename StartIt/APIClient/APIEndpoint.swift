@@ -13,12 +13,23 @@ protocol Endpoint {
     var method: HTTPMethod { get }
     var headers: HTTPHeaders { get }
     var authRequired: Bool { get }
+    var urlString: String { get }
 }
 
 extension Endpoint {
+    var urlString: String { "http://147.78.66.203:3210/" + getEndpoint() }
     var method: HTTPMethod      { .get }
     var authRequired: Bool      { true }
     var headers: HTTPHeaders    { [.accept("application/json")] }
+}
+
+struct BareUrlEndpoint: Endpoint {
+    let urlString: String
+    let authRequired: Bool = true
+    
+    func getEndpoint() -> String { "" }
+    var headers: HTTPHeaders    { [.accept(<#T##value: String##String#>)] }
+    
 }
 
 enum AuthEndpoint: Endpoint {

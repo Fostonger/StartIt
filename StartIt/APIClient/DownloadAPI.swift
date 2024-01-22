@@ -9,5 +9,6 @@ import Foundation
 import Combine
 
 protocol Downloadable {
-    func downloadData(from url: URL) -> AnyPublisher<Data?, APIError>
+    func downloadData(with endpoint: Endpoint) -> AnyPublisher<Data, APIError>
+    func downloadData<T: Encodable>(with endpoint: Endpoint, parameters: T) -> AnyPublisher<Data, APIError>
 }
